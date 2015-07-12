@@ -1,7 +1,0 @@
-[0m[[0mdebug[0m] [0mRunning TaskDef(com.misfit.modules.json.serial.JsonSerialSpec, specs2 Specification fingerprint, false, [SuiteSelector])[0m
-[0m[[0mdebug[0m] [0mSummary for ScalaCheck not available.[0m
-[0m[[0mdebug[0m] [0mSummary for specs2 not available.[0m
-[0m[[0mdebug[0m] [0mSummary for JUnit not available.[0m
-[0m[[0minfo[0m] [0mPassed: Total 1, Failed 0, Errors 0, Passed 1[0m
-[0m[[0mdebug[0m] [0mPassed tests:[0m
-[0m[[0mdebug[0m] [0m	com.misfit.modules.json.serial.JsonSerialSpec[0m
