@@ -1,4 +1,4 @@
-package com.misfit.modules.json.serial
+package com.truman.modules.json.serial
 
 import javax.inject._
 import com.google.inject.AbstractModule

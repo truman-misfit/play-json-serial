@@ -1,4 +1,4 @@
-package com.misfit.modules.json.serial
+package com.truman.modules.json.serial
 
 import play.api._
 import play.api.test._
