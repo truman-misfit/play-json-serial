@@ -1,0 +1,5 @@
+2015-07-06 20:02:13,437 [INFO] from play.api.libs.concurrent.ActorSystemProvider in specs2.fixed.env-1233277962-7 - Starting application default Akka system: application
+2015-07-06 20:02:13,477 [INFO] from play.api.libs.concurrent.ActorSystemProvider in specs2.fixed.env-1233277962-7 - Shutdown application default Akka system: application
+2015-07-06 20:04:50,843 [INFO] from application in specs2.fixed.env-1041275193-7 - Bind MsgPack as JSON default serial module.
+2015-07-06 20:04:51,136 [INFO] from play.api.libs.concurrent.ActorSystemProvider in specs2.fixed.env-1041275193-7 - Starting application default Akka system: application
+2015-07-06 20:04:51,710 [INFO] from play.api.libs.concurrent.ActorSystemProvider in specs2.fixed.env-1041275193-7 - Shutdown application default Akka system: application
