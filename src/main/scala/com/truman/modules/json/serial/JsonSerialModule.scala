@@ -15,6 +15,7 @@ trait JsonSerial {
   def read[T](data: Array[Byte])(implicit mainfest: Manifest[T]): T
 }
 
+@Singleton
 class MsgPackSerial extends JsonSerial {
   def write(obj: Any): Array[Byte] = {
     ScalaMessagePack.write(obj)
@@ -25,6 +26,7 @@ class MsgPackSerial extends JsonSerial {
   }
 }
 
+@Singleton
 class ProtoBufSerial extends JsonSerial {
   def write(obj: Any): Array[Byte] = {
     throw new Exception("Have not implemented yet.")
