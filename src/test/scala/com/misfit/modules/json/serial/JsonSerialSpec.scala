@@ -6,6 +6,9 @@ import play.api.libs.json._
 
 import javax.inject._
 
+import scala.concurrent.Await
+import scala.concurrent.duration._
+
 import JsonSerialScope._
 
 class JsonSerialSpec extends PlaySpecification {
@@ -21,7 +24,7 @@ class JsonSerialSpec extends PlaySpecification {
       user.roles = Array("user")
       user.profile.gender = 2
 
-      val data = jserial.write(user)
+      val data = Await.result(jserial.write(user), 10.millis)
       data must not be empty
 
       for(b <- data){
@@ -33,7 +36,7 @@ class JsonSerialSpec extends PlaySpecification {
       val json = Json.toJson(user)
       println("The length of JSON String bytes is : " + json.toString.getBytes.length)
 
-      val recover = jserial.read[User](data)
+      val recover = Await.result(jserial.read[User](data), 10.millis)
 
       recover.id must_== user.id
       recover.name must_== user.name

@@ -3,6 +3,8 @@ package com.truman.modules.json.serial
 import javax.inject._
 import com.google.inject.AbstractModule
 
+import scala.concurrent.Future
+
 import play.api.Play
 import play.api.inject.ApplicationLifecycle
 import play.api.{ Logger, Environment, Configuration }
@@ -11,29 +13,42 @@ import org.msgpack.annotation.Message
 import org.msgpack.ScalaMessagePack
 
 trait JsonSerial {
-  def write(obj: Any): Array[Byte]
-  def read[T](data: Array[Byte])(implicit mainfest: Manifest[T]): T
+  /**
+   * Serialize scala object into bytes Array
+   *
+   * @param obj The scala object
+   * @return The serialized bytes array
+   */
+  def write(obj: Any): Future[Array[Byte]]
+  /**
+   * Extract the scala object from bytes Array
+   *
+   * @param data The serialized bytes array
+   * @return The extracted object
+   */
+  def read[T](data: Array[Byte])(implicit mainfest: Manifest[T]): Future[T]
 }
 
 @Singleton
 class MsgPackSerial extends JsonSerial {
-  def write(obj: Any): Array[Byte] = {
-    ScalaMessagePack.write(obj)
+  override def write(obj: Any): Future[Array[Byte]] = {
+    Future.successful(ScalaMessagePack.write(obj))
   }
-  def read[T](data: Array[Byte])
-    (implicit manifest : Manifest[T]): T = {
-    ScalaMessagePack.read[T](data)
+
+  override def read[T](data: Array[Byte])
+    (implicit manifest : Manifest[T]): Future[T] = {
+    Future.successful(ScalaMessagePack.read[T](data))
   }
 }
 
 @Singleton
 class ProtoBufSerial extends JsonSerial {
-  def write(obj: Any): Array[Byte] = {
+  def write(obj: Any): Future[Array[Byte]] = {
     throw new Exception("Have not implemented yet.")
   }
 
   def read[T](data: Array[Byte])
-    (implicit manifest: Manifest[T]): T = {
+    (implicit manifest: Manifest[T]): Future[T] = {
     throw new Exception("Have not implemented yet.")
   }
 }
